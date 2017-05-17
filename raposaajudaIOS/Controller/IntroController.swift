@@ -54,8 +54,12 @@ class IntroController: UIViewController, UICollectionViewDataSource, UICollectio
 	}()
 	
 	func goToHome(){
-		let hc = HomeController()
-		present(hc, animated: true, completion: nil)
+		
+		// If accessed once no longer displayed the intro screen
+		UserDefaults.standard.set(true, forKey: "checked")
+		
+		let homeController = UINavigationController(rootViewController: HomeController())
+		present(homeController, animated: true, completion: nil)
 	}
 	
 	var pageControlBottomAnchor: NSLayoutConstraint?
@@ -70,13 +74,9 @@ class IntroController: UIViewController, UICollectionViewDataSource, UICollectio
 		view.addSubview(collectionView)
 		view.addSubview(pageControl)
 		view.addSubview(startApp)
-		
-		let views = [
-			"collectionView": self.collectionView
-		]
-		
-		let collectionHorizontal = NSLayoutConstraint.constraints(withVisualFormat: "H:|[collectionView]|", options: NSLayoutFormatOptions.alignAllCenterX, metrics: nil, views: views)
-		let collectionVertical = NSLayoutConstraint.constraints(withVisualFormat: "V:|-(-20)-[collectionView]|", options: NSLayoutFormatOptions.alignAllCenterY, metrics: nil, views: views)
+
+		let collectionHorizontal = NSLayoutConstraint.constraints(withVisualFormat: "H:|[collectionView]|", options: .alignAllCenterX, metrics: nil, views: ["collectionView": collectionView])
+		let collectionVertical = NSLayoutConstraint.constraints(withVisualFormat: "V:|-(-20)-[collectionView]|", options: .alignAllCenterY, metrics: nil, views: ["collectionView": collectionView])
 		
 		view.addConstraints(collectionVertical)
 		view.addConstraints(collectionHorizontal)

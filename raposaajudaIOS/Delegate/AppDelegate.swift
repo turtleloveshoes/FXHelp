@@ -15,7 +15,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		window = UIWindow(frame: UIScreen.main.bounds)
 		window?.makeKeyAndVisible()
 		
-		window?.rootViewController = UINavigationController(rootViewController: IntroController())
+		if !UserDefaults.standard.bool(forKey: "checked"){
+			window?.rootViewController = UINavigationController(rootViewController: HomeController())
+		}else{
+			window?.rootViewController = UINavigationController(rootViewController: IntroController())
+		}
+		
+		UINavigationBar.appearance().shadowImage = UIImage()
+		UINavigationBar.appearance().barTintColor = UIConstants.blueColor
+		UINavigationBar.appearance().setBackgroundImage(UIImage(), for: .default)
+		
+		application.statusBarStyle = .lightContent
 		
 		return true
 	}

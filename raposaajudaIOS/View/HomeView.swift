@@ -9,7 +9,7 @@ class HomeView: UIView {
 	override init(frame: CGRect) {
 		super.init(frame: frame)
 		
-		backgroundColor = UIConstants.blueColor
+		backgroundColor = .white
 	}
 	
 	required init?(coder aDecoder: NSCoder) {
