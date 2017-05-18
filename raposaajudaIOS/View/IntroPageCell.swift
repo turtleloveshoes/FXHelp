@@ -34,16 +34,12 @@ class IntroPageCell: UICollectionViewCell {
 	
 	var page: IntroPage? {
 		didSet {
-			
 			guard let page = page else {
 				return
 			}
 			
-			var imageName = page.imageName
-			if UIDevice.current.orientation.isLandscape {
-				imageName += "_landscape"
-			}
-			
+			let imageName = page.imageName
+		
 			imageView.image = UIImage(named: imageName)
 			
 			let color = UIConstants.colorLine

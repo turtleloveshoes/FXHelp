@@ -6,7 +6,7 @@ import UIKit
 
 private let cellId = "cellId"
 
-class IntroController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+class IntroController: UIViewController {
 	
 	let pages: [IntroPage] = {
 		
@@ -54,8 +54,12 @@ class IntroController: UIViewController, UICollectionViewDataSource, UICollectio
 	}()
 	
 	func goToHome(){
-		let hc = HomeController()
-		present(hc, animated: true, completion: nil)
+		
+		// If accessed once no longer displayed the intro screen
+		UserDefaults.standard.set(true, forKey: "checked")
+		
+		let homeController = UINavigationController(rootViewController: HomeController())
+		present(homeController, animated: true, completion: nil)
 	}
 	
 	var pageControlBottomAnchor: NSLayoutConstraint?
@@ -70,13 +74,9 @@ class IntroController: UIViewController, UICollectionViewDataSource, UICollectio
 		view.addSubview(collectionView)
 		view.addSubview(pageControl)
 		view.addSubview(startApp)
-		
-		let views = [
-			"collectionView": self.collectionView
-		]
-		
-		let collectionHorizontal = NSLayoutConstraint.constraints(withVisualFormat: "H:|[collectionView]|", options: NSLayoutFormatOptions.alignAllCenterX, metrics: nil, views: views)
-		let collectionVertical = NSLayoutConstraint.constraints(withVisualFormat: "V:|-(-20)-[collectionView]|", options: NSLayoutFormatOptions.alignAllCenterY, metrics: nil, views: views)
+
+		let collectionHorizontal = NSLayoutConstraint.constraints(withVisualFormat: "H:|[collectionView]|", options: .alignAllCenterX, metrics: nil, views: ["collectionView": collectionView])
+		let collectionVertical = NSLayoutConstraint.constraints(withVisualFormat: "V:|-(-20)-[collectionView]|", options: .alignAllCenterY, metrics: nil, views: ["collectionView": collectionView])
 		
 		view.addConstraints(collectionVertical)
 		view.addConstraints(collectionHorizontal)
@@ -109,30 +109,7 @@ class IntroController: UIViewController, UICollectionViewDataSource, UICollectio
 	fileprivate func moveControlConstraintsOffScreen() {
 		pageControlBottomAnchor?.constant = 40
 	}
-	
-	fileprivate func registerCells() {
-		collectionView.register(IntroPageCell.self, forCellWithReuseIdentifier: cellId)
-	}
-	
-	func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-		return pages.count
-	}
-	
-	func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-		
-		
-		let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! IntroPageCell
-		
-		let page = pages[(indexPath as NSIndexPath).item]
-		cell.page = page
-		
-		return cell
-	}
-	
-	func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-		return CGSize(width: view.frame.width, height: view.frame.height)
-	}
-	
+
 	override func willTransition(to newCollection: UITraitCollection, with coordinator: UIViewControllerTransitionCoordinator) {
 		
 		collectionView.collectionViewLayout.invalidateLayout()
@@ -146,3 +123,32 @@ class IntroController: UIViewController, UICollectionViewDataSource, UICollectio
 	}
 	
 }
+
+// MARK: - UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource
+extension IntroController: UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
+	
+	fileprivate func registerCells() {
+		collectionView.register(IntroPageCell.self, forCellWithReuseIdentifier: cellId)
+	}
+
+	func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+		return pages.count
+	}
+	
+	func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+		let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! IntroPageCell
+		
+		let page = pages[(indexPath as NSIndexPath).item]
+		cell.page = page
+		
+		return cell
+	}
+	
+	func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+		return CGSize(width: view.frame.width, height: view.frame.height)
+	}
+
+
+}
+
+

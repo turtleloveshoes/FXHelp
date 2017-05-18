@@ -10,8 +10,17 @@ public struct UIConstants {
 	static let blueColor = UIColor(red: 61/255, green: 178/255, blue: 218/255, alpha: 1)
 	static let colorLine = UIColor(white: 0.2, alpha: 1)
 	static let greenAlive = UIColor(red: 125/255, green: 192/55, blue: 43/255, alpha: 1)
+	static let colorImageMenuNotSelected = UIColor(red: 44/255, green: 138/255, blue: 169/255, alpha: 1)
 	
 	static let MenuToolbarBackgroundColorNormal = UIColor(red: 241/255, green: 241/255, blue: 241/255, alpha: 1)
+	
+	// Static distance
+	
+	static let menuSettings: CGFloat = 288
+	
+	// Static sizes
+	
+	static let halfWidthScreen: CGFloat = UIScreen.main.bounds.width
 	
 	// Static Fonts
 	
