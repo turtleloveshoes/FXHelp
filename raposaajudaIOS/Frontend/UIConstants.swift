@@ -18,6 +18,10 @@ public struct UIConstants {
 	
 	static let menuSettings: CGFloat = 288
 	
+	// Static sizes
+	
+	static let halfWidthScreen: CGFloat = UIScreen.main.bounds.width
+	
 	// Static Fonts
 	
 	static let DefaultChromeSize: CGFloat = 14

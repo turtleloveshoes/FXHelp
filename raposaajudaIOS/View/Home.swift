@@ -1,10 +1,10 @@
-//
-//
-//
+////
+////
+////
 
 import UIKit
 
-class HomeView: UIView {
+class Home: UIView {
 	
 	override init(frame: CGRect) {
 		super.init(frame: frame)

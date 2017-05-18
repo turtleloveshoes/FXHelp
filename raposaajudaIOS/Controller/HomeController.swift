@@ -6,14 +6,14 @@ import UIKit
 
 class HomeController: UIViewController, DelegateOfMenuSettings {
 	
-	let menuBar: MenuBarView = {
-		let mb = MenuBarView()
+	let menuBar: MenuBar = {
+		let mb = MenuBar()
 		mb.translatesAutoresizingMaskIntoConstraints = false
 		return mb
 	}()
 	
-	lazy var settings: MenuSettings = {
-		let st = MenuSettings.init(frame: UIScreen.main.bounds)
+	lazy var settings: MenuSettingsView = {
+		let st = MenuSettingsView.init(frame: UIScreen.main.bounds)
 		st.delegate = self
 		return st
 	}()
@@ -22,7 +22,7 @@ class HomeController: UIViewController, DelegateOfMenuSettings {
 		super.viewDidLoad()
 		
 		navigationController?.navigationBar.isTranslucent = false
-		let title = UILabel(frame: CGRect(x: 0, y: 0, width: view.frame.width - 4, height: view.frame.height))
+		let title = UILabel(frame: CGRect(x: 0, y: 0, width: view.frame.width - UIConstants.halfWidthScreen, height: view.frame.height))
 		title.text = "Home"
 		title.textColor = .white
 		navigationItem.titleView = title
@@ -57,8 +57,8 @@ class HomeController: UIViewController, DelegateOfMenuSettings {
 	}
 	
 	func iconMore(){
-		let icon	= UIBarButtonItem(image: #imageLiteral(resourceName: "iconmore"), style: .plain, target: self, action: #selector(openSettings))
+		let icon	= UIBarButtonItem(image: #imageLiteral(resourceName: "icon_more"), style: .plain, target: self, action: #selector(openSettings))
 		icon.tintColor = .white
-		navigationItem.rightBarButtonItem = icon
+		navigationItem.leftBarButtonItem = icon
 	}
 }

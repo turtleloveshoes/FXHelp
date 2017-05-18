@@ -2,11 +2,12 @@
   "images" : [
     {
       "idiom" : "universal",
+      "filename" : "knowledgebase.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "notifications.png",
+      "filename" : "knowledgebase@2x.png",
       "scale" : "2x"
     },
     {

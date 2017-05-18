@@ -4,11 +4,11 @@
 
 import UIKit
 
-private let cellMenu = "cellMenu"
+private let cellMenu = "cellMenuBar"
 
-class MenuBarView: UIView, UICollectionViewDelegateFlowLayout, UICollectionViewDelegate, UICollectionViewDataSource {
+class MenuBar: UIView {
 	
-	var menuImages = ["home", "blognews", "statistic", "statistic"]
+	var menuImages = ["home", "knowledge_base", "questions_forum", "statistic"]
 	
 	lazy var collectionView: UICollectionView = {
 		let layout = UICollectionViewFlowLayout()
@@ -24,10 +24,11 @@ class MenuBarView: UIView, UICollectionViewDelegateFlowLayout, UICollectionViewD
 		super.init(frame: frame)
 		addSubview(collectionView)
 		
-		collectionView.register(MenuCell.self, forCellWithReuseIdentifier: cellMenu)
+		collectionView.register(MenuBarCell.self, forCellWithReuseIdentifier: cellMenu)
 
 		backgroundColor = UIConstants.blueColor
 		setupConstraints()
+		homeSelected()
 	}
 	
 	func setupConstraints(){
@@ -38,15 +39,31 @@ class MenuBarView: UIView, UICollectionViewDelegateFlowLayout, UICollectionViewD
 		addConstraints(verticalMenu)
 	}
 	
+	func homeSelected(){
+		let homeIndex = NSIndexPath(item: 0, section: 0)
+		collectionView.selectItem(at: homeIndex as IndexPath, animated: true, scrollPosition: .top)
+	}
+	
+	required init?(coder aDecoder: NSCoder) {
+		fatalError("init(coder:) has not been implemented")
+	}
+}
+
+// MARK: - UICollectionViewDelegateFlowLayout, UICollectionViewDelegate, UICollectionViewDataSource
+extension MenuBar: UICollectionViewDelegateFlowLayout, UICollectionViewDelegate, UICollectionViewDataSource {
+
 	func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
 		return 4
 	}
 	
 	func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-		let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellMenu, for: indexPath) as! MenuCell
+		let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellMenu, for: indexPath) as! MenuBarCell
 		cell.imageMenu.image = UIImage(named: menuImages[indexPath.item])?.withRenderingMode(.alwaysTemplate)
 		cell.tintColor = UIConstants.colorImageMenuNotSelected
 		return cell
+	}
+	func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+		
 	}
 	
 	func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -56,8 +73,5 @@ class MenuBarView: UIView, UICollectionViewDelegateFlowLayout, UICollectionViewD
 	func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
 		return 0
 	}
-	
-	required init?(coder aDecoder: NSCoder) {
-		fatalError("init(coder:) has not been implemented")
-	}
+
 }

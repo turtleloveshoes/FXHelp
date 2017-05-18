@@ -2,11 +2,12 @@
   "images" : [
     {
       "idiom" : "universal",
+      "filename" : "questions_forum.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "blognews@2x.png",
+      "filename" : "questions_forum@2x.png",
       "scale" : "2x"
     },
     {

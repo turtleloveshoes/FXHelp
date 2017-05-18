@@ -1,14 +1,10 @@
 //
-//  MenuCell.swift
-//  raposaajudaIOS
 //
-//  Created by Jhonatas Rodrigues on 15/05/17.
-//  Copyright © 2017 Jhonatas Rodrigues. All rights reserved.
 //
 
 import UIKit
 
-class MenuCell: UICollectionViewCell {
+class MenuBarCell: UICollectionViewCell {
 	
 	var imageMenu: UIImageView = {
 		let imageView = UIImageView()

@@ -7,24 +7,25 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		712FAFFE1ECBB3470057289A /* MenuSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 712FAFFD1ECBB3470057289A /* MenuSettingsView.swift */; };
 		713008981EBFACA000593FC3 /* Anchor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713008971EBFACA000593FC3 /* Anchor.swift */; };
 		7130089A1EBFACB200593FC3 /* IntroController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713008991EBFACB200593FC3 /* IntroController.swift */; };
 		7130089F1EBFACD700593FC3 /* IntroPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7130089E1EBFACD700593FC3 /* IntroPage.swift */; };
 		713008A41EBFAD1900593FC3 /* UIConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713008A31EBFAD1900593FC3 /* UIConstants.swift */; };
 		713008A61EBFAD2D00593FC3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 713008A51EBFAD2D00593FC3 /* LaunchScreen.storyboard */; };
 		713008A81EBFAD4000593FC3 /* IntroPageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713008A71EBFAD4000593FC3 /* IntroPageCell.swift */; };
-		713008BD1EC1381B00593FC3 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713008BC1EC1381B00593FC3 /* HomeView.swift */; };
+		713008BD1EC1381B00593FC3 /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713008BC1EC1381B00593FC3 /* Home.swift */; };
 		7148634F1ECB8F86000BF299 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7148634E1ECB8F86000BF299 /* AppDelegate.swift */; };
 		714863551ECB925F000BF299 /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714863541ECB925F000BF299 /* HomeController.swift */; };
-		71A5D65D1ECA12A000B0491F /* MenuBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71A5D65C1ECA12A000B0491F /* MenuBarView.swift */; };
-		71A5D65F1ECA238A00B0491F /* MenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71A5D65E1ECA238A00B0491F /* MenuCell.swift */; };
-		71AB17F11ECB88D40080A822 /* MenuSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71AB17F01ECB88D40080A822 /* MenuSettings.swift */; };
+		71A5D65D1ECA12A000B0491F /* MenuBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71A5D65C1ECA12A000B0491F /* MenuBar.swift */; };
+		71A5D65F1ECA238A00B0491F /* MenuBarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71A5D65E1ECA238A00B0491F /* MenuBarCell.swift */; };
 		71AB17F21ECB899F0080A822 /* Intro.xcassets in Sources */ = {isa = PBXBuildFile; fileRef = 713008A11EBFACF700593FC3 /* Intro.xcassets */; };
 		71AB17F71ECB89B30080A822 /* MenuBar.xcassets in Sources */ = {isa = PBXBuildFile; fileRef = 71AB17F51ECB89B30080A822 /* MenuBar.xcassets */; };
 		71AB17F81ECB89B30080A822 /* Settings.xcassets in Sources */ = {isa = PBXBuildFile; fileRef = 71AB17F61ECB89B30080A822 /* Settings.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		712FAFFD1ECBB3470057289A /* MenuSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MenuSettingsView.swift; path = ../raposaajudaIOS/View/MenuSettingsView.swift; sourceTree = "<group>"; };
 		713008671EBFAA0F00593FC3 /* RaposaAjudaIOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RaposaAjudaIOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		713008761EBFAA0F00593FC3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		713008971EBFACA000593FC3 /* Anchor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Anchor.swift; path = Extensions/Anchor.swift; sourceTree = "<group>"; };
@@ -34,13 +35,12 @@
 		713008A31EBFAD1900593FC3 /* UIConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIConstants.swift; path = Frontend/UIConstants.swift; sourceTree = "<group>"; };
 		713008A51EBFAD2D00593FC3 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		713008A71EBFAD4000593FC3 /* IntroPageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = IntroPageCell.swift; path = View/IntroPageCell.swift; sourceTree = "<group>"; };
-		713008BC1EC1381B00593FC3 /* HomeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HomeView.swift; path = View/HomeView.swift; sourceTree = "<group>"; };
+		713008BC1EC1381B00593FC3 /* Home.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Home.swift; path = View/Home.swift; sourceTree = "<group>"; };
 		713008DC1EC2329F00593FC3 /* RaposaAjudaIOS-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RaposaAjudaIOS-Bridging-Header.h"; sourceTree = "<group>"; };
 		7148634E1ECB8F86000BF299 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = ../raposaajudaIOS/Delegate/AppDelegate.swift; sourceTree = "<group>"; };
 		714863541ECB925F000BF299 /* HomeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HomeController.swift; path = ../raposaajudaIOS/Controller/HomeController.swift; sourceTree = "<group>"; };
-		71A5D65C1ECA12A000B0491F /* MenuBarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MenuBarView.swift; path = raposaajudaIOS/View/MenuBarView.swift; sourceTree = SOURCE_ROOT; };
-		71A5D65E1ECA238A00B0491F /* MenuCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MenuCell.swift; path = raposaajudaIOS/View/MenuCell.swift; sourceTree = SOURCE_ROOT; };
-		71AB17F01ECB88D40080A822 /* MenuSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MenuSettings.swift; path = ../raposaajudaIOS/Controller/MenuSettings.swift; sourceTree = "<group>"; };
+		71A5D65C1ECA12A000B0491F /* MenuBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MenuBar.swift; path = raposaajudaIOS/View/MenuBar.swift; sourceTree = SOURCE_ROOT; };
+		71A5D65E1ECA238A00B0491F /* MenuBarCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MenuBarCell.swift; path = raposaajudaIOS/View/MenuBarCell.swift; sourceTree = SOURCE_ROOT; };
 		71AB17F51ECB89B30080A822 /* MenuBar.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = MenuBar.xcassets; path = ../raposaajudaIOS/Assets/MenuBar.xcassets; sourceTree = "<group>"; };
 		71AB17F61ECB89B30080A822 /* Settings.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Settings.xcassets; path = ../raposaajudaIOS/Assets/Settings.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -101,10 +101,11 @@
 		713008911EBFAC5B00593FC3 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				712FAFFD1ECBB3470057289A /* MenuSettingsView.swift */,
 				713008A71EBFAD4000593FC3 /* IntroPageCell.swift */,
-				713008BC1EC1381B00593FC3 /* HomeView.swift */,
-				71A5D65C1ECA12A000B0491F /* MenuBarView.swift */,
-				71A5D65E1ECA238A00B0491F /* MenuCell.swift */,
+				713008BC1EC1381B00593FC3 /* Home.swift */,
+				71A5D65C1ECA12A000B0491F /* MenuBar.swift */,
+				71A5D65E1ECA238A00B0491F /* MenuBarCell.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -113,7 +114,6 @@
 			isa = PBXGroup;
 			children = (
 				714863541ECB925F000BF299 /* HomeController.swift */,
-				71AB17F01ECB88D40080A822 /* MenuSettings.swift */,
 				713008991EBFACB200593FC3 /* IntroController.swift */,
 			);
 			name = Controller;
@@ -228,15 +228,15 @@
 				71AB17F71ECB89B30080A822 /* MenuBar.xcassets in Sources */,
 				71AB17F81ECB89B30080A822 /* Settings.xcassets in Sources */,
 				71AB17F21ECB899F0080A822 /* Intro.xcassets in Sources */,
-				71A5D65D1ECA12A000B0491F /* MenuBarView.swift in Sources */,
+				71A5D65D1ECA12A000B0491F /* MenuBar.swift in Sources */,
 				714863551ECB925F000BF299 /* HomeController.swift in Sources */,
 				7148634F1ECB8F86000BF299 /* AppDelegate.swift in Sources */,
 				7130089A1EBFACB200593FC3 /* IntroController.swift in Sources */,
+				712FAFFE1ECBB3470057289A /* MenuSettingsView.swift in Sources */,
 				713008A41EBFAD1900593FC3 /* UIConstants.swift in Sources */,
 				713008981EBFACA000593FC3 /* Anchor.swift in Sources */,
-				71AB17F11ECB88D40080A822 /* MenuSettings.swift in Sources */,
-				71A5D65F1ECA238A00B0491F /* MenuCell.swift in Sources */,
-				713008BD1EC1381B00593FC3 /* HomeView.swift in Sources */,
+				71A5D65F1ECA238A00B0491F /* MenuBarCell.swift in Sources */,
+				713008BD1EC1381B00593FC3 /* Home.swift in Sources */,
 				7130089F1EBFACD700593FC3 /* IntroPage.swift in Sources */,
 				713008A81EBFAD4000593FC3 /* IntroPageCell.swift in Sources */,
 			);

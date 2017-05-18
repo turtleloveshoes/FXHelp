@@ -6,7 +6,7 @@ import UIKit
 
 private let cellId = "cellId"
 
-class IntroController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+class IntroController: UIViewController {
 	
 	let pages: [IntroPage] = {
 		
@@ -109,30 +109,7 @@ class IntroController: UIViewController, UICollectionViewDataSource, UICollectio
 	fileprivate func moveControlConstraintsOffScreen() {
 		pageControlBottomAnchor?.constant = 40
 	}
-	
-	fileprivate func registerCells() {
-		collectionView.register(IntroPageCell.self, forCellWithReuseIdentifier: cellId)
-	}
-	
-	func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-		return pages.count
-	}
-	
-	func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-		
-		
-		let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! IntroPageCell
-		
-		let page = pages[(indexPath as NSIndexPath).item]
-		cell.page = page
-		
-		return cell
-	}
-	
-	func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-		return CGSize(width: view.frame.width, height: view.frame.height)
-	}
-	
+
 	override func willTransition(to newCollection: UITraitCollection, with coordinator: UIViewControllerTransitionCoordinator) {
 		
 		collectionView.collectionViewLayout.invalidateLayout()
@@ -146,3 +123,32 @@ class IntroController: UIViewController, UICollectionViewDataSource, UICollectio
 	}
 	
 }
+
+// MARK: - UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource
+extension IntroController: UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
+	
+	fileprivate func registerCells() {
+		collectionView.register(IntroPageCell.self, forCellWithReuseIdentifier: cellId)
+	}
+
+	func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+		return pages.count
+	}
+	
+	func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+		let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! IntroPageCell
+		
+		let page = pages[(indexPath as NSIndexPath).item]
+		cell.page = page
+		
+		return cell
+	}
+	
+	func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+		return CGSize(width: view.frame.width, height: view.frame.height)
+	}
+
+
+}
+
+

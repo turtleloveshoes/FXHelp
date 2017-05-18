@@ -34,7 +34,6 @@ class IntroPageCell: UICollectionViewCell {
 	
 	var page: IntroPage? {
 		didSet {
-			
 			guard let page = page else {
 				return
 			}

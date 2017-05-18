@@ -10,12 +10,12 @@ protocol DelegateOfMenuSettings {
 
 private let cellMenu = "cellMenu"
 
-class MenuSettings: UIView,  UITableViewDelegate, UITableViewDataSource {
+class MenuSettingsView: UIView {
 
 	var delegate: DelegateOfMenuSettings?
 	
 	let names = ["Notifications", "Send Feedback", "About", "Cancel"]
-	let icons = ["notifications", "sendFeedback", "about", "cancel"]
+	let icons = ["notifications", "feedback", "about", "cancel"]
 	
 	lazy var tableView: UITableView = {
 		let tv = UITableView.init(frame: CGRect.init(x: 0, y: self.bounds.height, width: self.bounds.width, height: UIConstants.menuSettings))
@@ -34,7 +34,7 @@ class MenuSettings: UIView,  UITableViewDelegate, UITableViewDataSource {
 	
 	override init(frame: CGRect) {
 		super.init(frame: frame)
-		backgroundView.addGestureRecognizer(UITapGestureRecognizer.init(target: self, action: #selector(MenuSettings.dismissMenu)))
+		backgroundView.addGestureRecognizer(UITapGestureRecognizer.init(target: self, action: #selector(MenuSettingsView.dismissMenu)))
 		self.addSubview(backgroundView)
 		self.addSubview(tableView)
 		self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: cellMenu)
@@ -61,6 +61,14 @@ class MenuSettings: UIView,  UITableViewDelegate, UITableViewDataSource {
 			self.delegate?.hideMenuSettings(status: true)
 		})
 	}
+
+	required init?(coder aDecoder: NSCoder) {
+		fatalError("init(coder:) has not been implemented")
+	}
+}
+
+// MARK: - UITableViewDelegate, UITableViewDataSource
+extension MenuSettingsView: UITableViewDelegate, UITableViewDataSource {
 	
 	func numberOfSections(in tableView: UITableView) -> Int {
 		return 1
@@ -87,13 +95,4 @@ class MenuSettings: UIView,  UITableViewDelegate, UITableViewDataSource {
 			dismissMenu()
 		}
 	}
-	
-	
-	required init?(coder aDecoder: NSCoder) {
-		fatalError("init(coder:) has not been implemented")
-	}
-	
 }
-
-
-
