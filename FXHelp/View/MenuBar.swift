@@ -10,7 +10,6 @@ class MenuBar: UIView {
 	let menuImages = ["home", "knowledge_base", "questions_forum", "statistic"]
 	
 	var homeController = HomeController()
-	var horizontalBarLeftAnchorConstraint: NSLayoutConstraint?
 	
 	lazy var collectionView: UICollectionView = {
 		let layout = UICollectionViewFlowLayout()
@@ -24,18 +23,23 @@ class MenuBar: UIView {
 	
 	override init(frame: CGRect) {
 		super.init(frame: frame)
-		addSubview(collectionView)
 		
 		collectionView.register(MenuBarCell.self, forCellWithReuseIdentifier: cellMenu)
 
-		backgroundColor = UIConstants.blueColor
 		setupConstraints()
 		homeSelected()
 	}
 	
 	func setupConstraints(){
-		addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[v0]|", options: .alignAllCenterX, metrics: nil, views: ["v0": collectionView]))
-		addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[v0]|", options: .alignAllCenterY, metrics: nil, views: ["v0": collectionView]))
+		addSubview(collectionView)
+		backgroundColor = UIConstants.blueColor
+		
+		NSLayoutConstraint.activate([
+			collectionView.topAnchor.constraint(equalTo: topAnchor),
+			collectionView.bottomAnchor.constraint(equalTo: bottomAnchor),
+			collectionView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor),
+			collectionView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor)
+			])
 	}
 	
 	func homeSelected(){

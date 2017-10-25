@@ -8,26 +8,28 @@ class IntroPageCell: UICollectionViewCell {
 	
 	override init(frame: CGRect) {
 		super.init(frame: frame)
-		setupViews()
+		setupConstraints()
 	}
 	
 	let imageView: UIImageView = {
 		let iv = UIImageView()
 		iv.contentMode = .scaleAspectFill
 		iv.clipsToBounds = true
+		iv.translatesAutoresizingMaskIntoConstraints = false
 		return iv
 	}()
 	
 	let textView: UITextView = {
 		let tv = UITextView()
 		tv.isEditable = false
-		tv.contentInset = UIEdgeInsets(top: 2, left: 0, bottom: 0, right: 0)
+		tv.translatesAutoresizingMaskIntoConstraints = false
 		return tv
 	}()
 	
 	let lineSeparatorView: UIView = {
 		let view = UIView()
 		view.backgroundColor = UIColor(white: 0.9, alpha: 1)
+		view.translatesAutoresizingMaskIntoConstraints = false
 		return view
 	}()
 	
@@ -42,28 +44,40 @@ class IntroPageCell: UICollectionViewCell {
 			
 			let color = UIConstants.colorLine
 			
-			let attributedText = NSMutableAttributedString(string: page.title, attributes: [NSFontAttributeName: UIFont(name: "ZillaSlab-Bold", size: 20) as Any, NSForegroundColorAttributeName: color])
-			attributedText.append(NSAttributedString(string: "\n\n\(page.message)", attributes: [NSFontAttributeName: UIFont(name: "ZillaSlab-Medium", size: 15) as Any, NSForegroundColorAttributeName: color]))
+			let attributedText = NSMutableAttributedString(string: page.title, attributes: [NSAttributedStringKey.font: UIFont(name: "ZillaSlab-Bold", size: 22) as Any, NSAttributedStringKey.foregroundColor: color])
+			attributedText.append(NSAttributedString(string: "\n\n\(page.message)", attributes: [NSAttributedStringKey.font: UIFont(name: "ZillaSlab-Light", size: 17) as Any, NSAttributedStringKey.foregroundColor: color]))
 			
 			let paragraphStyle = NSMutableParagraphStyle()
 			paragraphStyle.alignment = .center
 			let length = attributedText.string.characters.count
-			attributedText.addAttribute(NSParagraphStyleAttributeName, value: paragraphStyle, range: NSRange(location: 0, length: length))
+			attributedText.addAttribute(NSAttributedStringKey.paragraphStyle, value: paragraphStyle, range: NSRange(location: 0, length: length))
 			
 			textView.attributedText = attributedText
 		}
 	}
 	
-	func setupViews() {
+	func setupConstraints() {
 		addSubview(imageView)
 		addSubview(textView)
 		addSubview(lineSeparatorView)
 		
-		imageView.anchorToTop(topAnchor, left: leftAnchor, bottom: textView.topAnchor, right: rightAnchor)
-		textView.anchorWithConstantsToTop(nil, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor, topConstant: 0, leftConstant: 4, bottomConstant: 24, rightConstant: 4)
-		textView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.3).isActive = true
-		lineSeparatorView.anchorToTop(nil, left: leftAnchor, bottom: textView.topAnchor, right: rightAnchor)
-		lineSeparatorView.heightAnchor.constraint(equalToConstant: 1).isActive = true
+		NSLayoutConstraint.activate([
+			textView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.4),
+			textView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor),
+			textView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor),
+			textView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor)
+			])
+		NSLayoutConstraint.activate([
+			imageView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
+			imageView.bottomAnchor.constraint(equalTo: textView.topAnchor),
+			imageView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor),
+			imageView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor)
+			])
+		NSLayoutConstraint.activate([
+			lineSeparatorView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor),
+			lineSeparatorView.bottomAnchor.constraint(equalTo: textView.topAnchor),
+			lineSeparatorView.heightAnchor.constraint(equalToConstant: 1)
+			])
 	}
 	
 	required init?(coder aDecoder: NSCoder) {

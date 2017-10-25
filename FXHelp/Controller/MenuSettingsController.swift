@@ -16,6 +16,7 @@ class MenuSettingsController: NSObject, UITableViewDelegate, UITableViewDataSour
 		tv.isScrollEnabled = false
 		tv.delegate = self
 		tv.dataSource = self
+		tv.translatesAutoresizingMaskIntoConstraints = false
 		return tv
 	}()
 	
@@ -40,21 +41,21 @@ class MenuSettingsController: NSObject, UITableViewDelegate, UITableViewDataSour
 			backgroundView.alpha = 0
 			backgroundView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(dismissMenu)))
 			window.addSubview(backgroundView)
-			
-			let settingsTableViewHeight = 50 * CGFloat(settingsOptions.count)
-			settingsTableView.frame = CGRect(x: 0, y: 64, width: window.frame.width, height: settingsTableViewHeight)
 			window.addSubview(settingsTableView)
 			
-			UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .transitionCurlDown, animations: {
-				self.backgroundView.alpha = 0.6
+			let settingsTableViewHeight = 50 * CGFloat(settingsOptions.count)
+			settingsTableView.frame = CGRect(x: UIConstants.widthScreen/22, y: UIConstants.heightScreen/3, width: window.frame.width/1.1, height: settingsTableViewHeight)
+			
+			UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .beginFromCurrentState, animations: {
+				self.backgroundView.alpha = 0.9
 				self.settingsTableView.alpha = 1
-				self.settingsTableView.frame.origin.x = 0
-				self.settingsTableView.frame.origin.y = 64
+				self.settingsTableView.frame.origin.x = UIConstants.widthScreen/22
+				self.settingsTableView.frame.origin.y = UIConstants.heightScreen/3
 			}, completion: nil)
 		}
 	}
 	
-	func dismissMenu() {
+	@objc func dismissMenu() {
 		UIView.animate(withDuration: 0.5) {
 			self.backgroundView.alpha = 0
 			self.settingsTableView.alpha = 0

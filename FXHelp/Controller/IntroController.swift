@@ -33,21 +33,53 @@ class IntroController: UIViewController {
 		pc.pageIndicatorTintColor = .lightGray
 		pc.currentPageIndicatorTintColor = UIConstants.blueColor
 		pc.numberOfPages = self.pages.count
+		pc.translatesAutoresizingMaskIntoConstraints = false
 		return pc
 	}()
 	
-	var startApp: UIButton = {
-		let bt = UIButton()
-		bt.backgroundColor = UIConstants.blueColor
-		bt.isHidden = true
-		bt.setTitleColor(.white, for: .normal)
-		bt.setTitle("Start", for: .normal)
-		bt.titleLabel?.font = UIFont(name: "ZillaSlab-Bold", size: 20)
-		bt.addTarget(self, action: #selector(goToHome), for: .touchUpInside)
-		return bt
+	let previousButton: UIButton = {
+		let pvButton = UIButton(type: .system)
+		pvButton.setTitle("PREV", for: .normal)
+		pvButton.titleLabel?.font = UIFont(name: "ZillaSlab-Bold", size: 15)
+		pvButton.tintColor = .gray
+		pvButton.addTarget(self, action: #selector(previousPage), for: .touchUpInside)
+		pvButton.translatesAutoresizingMaskIntoConstraints = false
+		return pvButton
 	}()
 	
-	func goToHome(){
+	let nextButton: UIButton = {
+		let nxtButton = UIButton(type: .system)
+		nxtButton.setTitle("NEXT", for: .normal)
+		nxtButton.titleLabel?.font = UIFont(name: "ZillaSlab-Bold", size: 15)
+		nxtButton.tintColor = UIConstants.blueColor
+		nxtButton.addTarget(self, action: #selector(nextPage), for: .touchUpInside)
+		nxtButton.translatesAutoresizingMaskIntoConstraints = false
+		return nxtButton
+	}()
+	
+	let skipButton: UIButton = {
+		let skpButton = UIButton(type: .system)
+		skpButton.setTitle("SKIP", for: .normal)
+		skpButton.titleLabel?.font = UIFont(name: "ZillaSlab-Bold", size: 18)
+		skpButton.tintColor = .white
+		skpButton.addTarget(self, action: #selector(goToHome), for: .touchUpInside)
+		skpButton.translatesAutoresizingMaskIntoConstraints = false
+		return skpButton
+	}()
+	
+	var startApp: UIButton = {
+		let startButton = UIButton()
+		startButton.backgroundColor = UIConstants.grayColor
+		startButton.isHidden = true
+		startButton.setTitleColor(.white, for: .normal)
+		startButton.setTitle("START", for: .normal)
+		startButton.titleLabel?.font = UIFont(name: "ZillaSlab-Bold", size: 20)
+		startButton.addTarget(self, action: #selector(goToHome), for: .touchUpInside)
+		startButton.translatesAutoresizingMaskIntoConstraints = false
+		return startButton
+	}()
+	
+	@objc func goToHome(){
 		// If accessed once no longer displayed the intro screen
 		UserDefaults.standard.set(true, forKey: "checked")
 		
@@ -59,46 +91,105 @@ class IntroController: UIViewController {
 		let homeController = UINavigationController(rootViewController: HomeController(collectionViewLayout: layout))
 		present(homeController, animated: true, completion: nil)
 	}
-	
-	var pageControlBottomAnchor: NSLayoutConstraint?
-	var buttonControlStartApp: NSLayoutConstraint?
-	
+
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		navigationController?.isNavigationBarHidden = true
 		collectionView.showsHorizontalScrollIndicator = false
 		collectionView.register(IntroPageCell.self, forCellWithReuseIdentifier: cellId)
 		
+		setupConstraints()
+	}
+	
+	func setupConstraints(){
+		let stackView = UIStackView(arrangedSubviews: [previousButton, pageControl, nextButton])
+		stackView.distribution = .fillEqually
+		stackView.translatesAutoresizingMaskIntoConstraints = false
+		
 		view.addSubview(collectionView)
-		view.addSubview(pageControl)
 		view.addSubview(startApp)
+		view.addSubview(stackView)
+		view.addSubview(skipButton)
 		
-		view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[collectionView]|", options: .alignAllCenterX, metrics: nil, views: ["collectionView": collectionView]))
-		view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-(-20)-[collectionView]|", options: .alignAllCenterY, metrics: nil, views: ["collectionView": collectionView]))
+		NSLayoutConstraint.activate([
+			collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+			collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+			collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+			collectionView.heightAnchor.constraint(equalToConstant: view.frame.height * 1.05),
+			collectionView.widthAnchor.constraint(equalToConstant: view.frame.width)
+			])
+		NSLayoutConstraint.activate([
+			stackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+			stackView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+			stackView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+			stackView.heightAnchor.constraint(equalToConstant: 45),
+			])
+		NSLayoutConstraint.activate([
+			startApp.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -20),
+			startApp.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20),
+			startApp.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20),
+			startApp.heightAnchor.constraint(equalToConstant: 60)
+			])
+		NSLayoutConstraint.activate([
+			skipButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+			skipButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -30)
+			])
+	}
+	
+	@objc func previousPage(){
+		let indexPath = IndexPath(item: pageControl.currentPage - 1, section: 0)
 		
-		pageControlBottomAnchor = pageControl.anchor(nil, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor, topConstant: 0, leftConstant: 0, bottomConstant: 0, rightConstant: 0, widthConstant: 0, heightConstant: 40)[1]
-		buttonControlStartApp = startApp.anchor(nil, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor, topConstant: 0, leftConstant: 0, bottomConstant: 0, rightConstant: 0, widthConstant: 0, heightConstant: 45).first
+		if pageControl.currentPage == 0 {
+			previousButton.tintColor = .gray
+		}else{
+			previousButton.tintColor = UIConstants.blueColor
+			collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
+			pageControl.currentPage -= 1
+			if pageControl.currentPage == 0 {
+				previousButton.tintColor = .gray
+			}
+		}
+	}
+	
+	@objc func nextPage(){
+		previousButton.tintColor = UIConstants.blueColor
+		
+		let indexPath = IndexPath(item: pageControl.currentPage + 1, section: 0)
+		collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
+		pageControl.currentPage += 1
+		
+		if pageControl.currentPage == 3{
+					previousButton.isHidden = true
+					nextButton.isHidden = true
+					pageControl.isHidden = true
+					skipButton.isHidden = true
+					startApp.isHidden = false
+		}
 	}
 	
 	func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
 		let pageNumber = Int(targetContentOffset.pointee.x / view.frame.width)
 		pageControl.currentPage = pageNumber
 		
-		if pageNumber == 3 {
-			self.pageControlBottomAnchor?.constant = 40
-			self.startApp.isHidden = false
-		}else {
-			self.pageControlBottomAnchor?.constant = 0
-			self.startApp.isHidden = true
+		if pageNumber >= 1 {
+			previousButton.tintColor = UIConstants.blueColor
+		}else{
+			previousButton.tintColor = .gray
 		}
 		
-		UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
-			self.view.layoutIfNeeded()
-		}, completion: nil)
-	}
-	
-	fileprivate func moveControlConstraintsOffScreen() {
-		pageControlBottomAnchor?.constant = 40
+		if pageNumber == 3 {
+			startApp.isHidden = false
+			nextButton.isHidden = true
+			previousButton.isHidden = true
+			skipButton.isHidden = true
+			pageControl.isHidden = true
+		}else {
+			startApp.isHidden = true
+			skipButton.isHidden = false
+			nextButton.isHidden = false
+			previousButton.isHidden = false
+			pageControl.isHidden = false
+		}
 	}
 
 	override func willTransition(to newCollection: UITraitCollection, with coordinator: UIViewControllerTransitionCoordinator) {

@@ -35,14 +35,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		window?.addSubview(statusBarBackgroundView)
 		
 		application.statusBarStyle = .lightContent
-		
+	
 		return true
 	}
-	
+
 	func applicationWillResignActive(_ application: UIApplication) {
 		
 	}
-	
+
 	func applicationDidEnterBackground(_ application: UIApplication) {
 		
 	}

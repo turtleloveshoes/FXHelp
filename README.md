@@ -26,12 +26,12 @@ A app for users of [SUMO (Support Mozilla)](http://support.mozilla.org/) to help
     ```
 1. Clone the repository:
     ```shell
-    git clone https://github.com/jhonatasrm/FXHelp
+    git clone https://github.com/turtleloveshoes/FXHelp
     ```
 1. Open `FXHelp.xcodeproj` in Xcode.
 1. Build the `Velpus` scheme in Xcode.
 
-## ** Contributor guidelines **
+## **Contributor guidelines**
 -----------------
 
 ### Swift style

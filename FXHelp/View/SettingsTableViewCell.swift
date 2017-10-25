@@ -17,6 +17,6 @@ class SettingsTableViewCell: UITableViewCell {
 		textLabelFrame?.origin.x += 2
 		textLabelFrame?.size.width += 10
 		self.textLabel?.frame = textLabelFrame!
-		self.textLabel?.font = UIFont(name: "ZillaSlab-Light", size: 16)
+		self.textLabel?.font = UIFont(name: "ZillaSlab-Light", size: 18)
 	}
 }
