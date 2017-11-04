@@ -30,7 +30,7 @@ class MenuBar: UIView {
 		homeSelected()
 	}
 	
-	func setupConstraints(){
+	func setupConstraints() {
 		addSubview(collectionView)
 		backgroundColor = UIConstants.blueColor
 		
@@ -42,7 +42,7 @@ class MenuBar: UIView {
 			])
 	}
 	
-	func homeSelected(){
+	func homeSelected() {
 		let homeIndex = NSIndexPath(item: 0, section: 0)
 		collectionView.selectItem(at: homeIndex as IndexPath, animated: true, scrollPosition: .top)
 	}

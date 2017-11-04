@@ -12,6 +12,7 @@ class MenuSettingsController: NSObject, UITableViewDelegate, UITableViewDataSour
 	lazy var settingsTableView: UITableView = {
 		let tv = UITableView(frame: .zero, style: UITableViewStyle.plain)
 		tv.separatorStyle = .none
+		tv.backgroundColor = .white
 		tv.showsVerticalScrollIndicator = false
 		tv.isScrollEnabled = false
 		tv.delegate = self

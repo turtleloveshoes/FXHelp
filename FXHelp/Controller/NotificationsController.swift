@@ -4,7 +4,7 @@
 
 import UIKit
 
-class NotificationsController: UIViewController{
+class NotificationsController: UIViewController {
 
 	let notificationsForum: UILabel = {
 		let nf = UILabel()
@@ -112,7 +112,7 @@ class NotificationsController: UIViewController{
 		}, completion:nil)
 	}
 	
-	func setupConstraints(){
+	func setupConstraints() {
 		view.addSubview(viewForum)
 		view.addSubview(viewKB)
 		view.addSubview(switchKB)

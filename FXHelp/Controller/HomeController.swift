@@ -4,12 +4,7 @@
 
 import UIKit
 
-class HomeController: UICollectionViewController {
-	
-	let cellID = "cellID"
-	let pageTitle = ["Home","Knowledge Base", "Support Forum", "Statistic"]
-	
-	var refreshScreen: UIRefreshControl!
+class HomeController: UICollectionViewController, SearchDelegate {
 	
 	let activityIndicator: UIActivityIndicatorView = {
 		let indicator = UIActivityIndicatorView()
@@ -36,6 +31,12 @@ class HomeController: UICollectionViewController {
 		return mb
 	}()
 	
+	lazy var search: SearchController = {
+		let sd = SearchController.init(frame: UIScreen.main.bounds)
+		sd.delegate = self
+		return sd
+	}()
+	
 	lazy var settings: MenuSettingsController = {
 		let st = MenuSettingsController()
 		st.homeController = self
@@ -49,6 +50,10 @@ class HomeController: UICollectionViewController {
 		title.textColor = .white
 		return title
 	}()
+	
+	let cellID = "cellID"
+	let pageTitle = ["Home","Knowledge Base", "Support Forum", "Statistic"]
+	var refreshScreen: UIRefreshControl!
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -68,7 +73,7 @@ class HomeController: UICollectionViewController {
 		preloadAbout()
 	}
 	
-	func setupCollectionView(){
+	func setupCollectionView() {
 		collectionView?.register(UICollectionViewCell.self, forCellWithReuseIdentifier: cellID)
 		collectionView?.contentInset = UIEdgeInsetsMake(60, 0, 0, 0)
 		collectionView?.scrollIndicatorInsets = UIEdgeInsetsMake(60.0, 0, 0, 0)
@@ -77,7 +82,7 @@ class HomeController: UICollectionViewController {
 		collectionView?.backgroundColor = .white
 	}
 	
-	func setupPageTitle(){
+	func setupPageTitle() {
 		let title = UILabel(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height))
 		title.text = "Home"
 		title.font = UIFont(name: "ZillaSlab-Bold", size: 20)
@@ -86,7 +91,7 @@ class HomeController: UICollectionViewController {
 		navigationItem.titleView = title
 	}
 	
-	func setupRefreshScreen(){
+	func setupRefreshScreen() {
 		refreshScreen = UIRefreshControl()
 		refreshScreen.attributedTitle = NSAttributedString(string: "", attributes: [NSAttributedStringKey.font: UIFont(name: "ZillaSlab-Light", size:14)!])
 		refreshScreen.translatesAutoresizingMaskIntoConstraints = false
@@ -106,10 +111,9 @@ class HomeController: UICollectionViewController {
 		loadingTextLabel.center = CGPoint(x: view.frame.width/2, y: activityIndicator.frame.height/5)
 	}
 	
-	func testConnection(){
+	func testConnection() {
 		DispatchQueue.global(qos: .userInteractive).async{
 			DispatchQueue.main.async{
-				
 				if self.currentReachabilityStatus == .notReachable{
 					self.activityIndicator.startAnimating()
 					self.activityIndicator.color = UIColor(white: 1, alpha: 0)
@@ -122,7 +126,7 @@ class HomeController: UICollectionViewController {
 		}
 	}
 	
-	func changeTitle(index: CGFloat){
+	func changeTitle(index: CGFloat) {
 		if let titleslabel = navigationItem.titleView as? UILabel {
 			titleslabel.text = pageTitle[Int(index)]
 		}
@@ -133,7 +137,7 @@ class HomeController: UICollectionViewController {
 		}
 	}
 	
-	private func setupMenu(){
+	private func setupMenu() {
 		view.addSubview(menuBar)
 		view.addSubview(activityIndicator)
 		
@@ -145,24 +149,36 @@ class HomeController: UICollectionViewController {
 			])
 	}
 	
-	@objc func openSettings(){
+	@objc func openSettings() {
 		settings.showSettings()
 	}
 	
-	func iconMore(){
+	func iconMore() {
 		let icon	= UIBarButtonItem(image: #imageLiteral(resourceName: "icon_more"), style: .plain, target: self, action: #selector(openSettings))
 		icon.tintColor = .white
 		navigationItem.leftBarButtonItem = icon
 	}
 	
-	func iconSearch(color: UIColor, enable: Bool){
-		let iconS = UIBarButtonItem(image: #imageLiteral(resourceName: "search"), style: .plain, target: self, action: nil)
+	func iconSearch(color: UIColor, enable: Bool) {
+		let iconS = UIBarButtonItem(image: #imageLiteral(resourceName: "search"), style: .plain, target: self, action: #selector(openSearch))
 		iconS.tintColor = color
 		iconS.isEnabled = enable
-		
 		navigationItem.rightBarButtonItem = iconS
 	}
-
+	
+	@objc func openSearch() {
+		if let window = UIApplication.shared.keyWindow {
+			window.addSubview(self.search)
+			self.search.animate()
+		}
+	}
+	
+	func hideSearchView(status : Bool) {
+		if status == true {
+			self.search.removeFromSuperview()
+		}
+	}
+	
 	override func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
 		let index = targetContentOffset.pointee.x / view.frame.width
 		let indexPath = IndexPath(item: Int(index), section: 0)
@@ -216,13 +232,13 @@ class HomeController: UICollectionViewController {
 }
 
 // MARK: - UICollectionViewDelegateFlowLayout
-extension HomeController: UICollectionViewDelegateFlowLayout{
+extension HomeController: UICollectionViewDelegateFlowLayout {
 	
 	override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
 		return 4
 	}
 	
-	override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell{
+	override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 		let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellID, for: indexPath)
 		cell.backgroundColor = .white
 		testConnection()
@@ -233,7 +249,7 @@ extension HomeController: UICollectionViewDelegateFlowLayout{
 		return CGSize(width: view.frame.width, height: view.frame.height)
 	}
 	
-	func scrollMenu(indexMenu: Int){
+	func scrollMenu(indexMenu: Int) {
 		let indexPath = NSIndexPath(item: indexMenu, section: 0) as IndexPath
 		collectionView?.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
 		testConnection()

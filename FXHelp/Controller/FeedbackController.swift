@@ -103,28 +103,28 @@ class FeedbackController: UIViewController, MFMailComposeViewControllerDelegate 
 		NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
 	}
 
-	@objc func keyboardWillShow(notification: NSNotification){
+	@objc func keyboardWillShow(notification: NSNotification) {
 		self.view.bounds.origin.y += 100
 	}
 	
-	@objc func keyboardWillHide(notification: NSNotification){
+	@objc func keyboardWillHide(notification: NSNotification) {
 		self.view.bounds.origin.y -= 100
 	}
 	
-	func sendButton(){
+	func sendButton() {
 		let button	= UIBarButtonItem(title: "Send", style: .plain, target: self, action: #selector(send))
 		button.tintColor = .white
 		navigationItem.rightBarButtonItem = button
 	}
 	
-	@objc func send(){
+	@objc func send() {
 		let mailComposeViewController = sendFeedback()
 		if MFMailComposeViewController.canSendMail(){
 			self.present(mailComposeViewController, animated:true, completion: nil)
 		}
 	}
 
-	func sendFeedback() -> MFMailComposeViewController{
+	func sendFeedback() -> MFMailComposeViewController {
 		let sendEmail = MFMailComposeViewController()
 		sendEmail.mailComposeDelegate = self
 		sendEmail.setToRecipients(["email@email.com"])
@@ -134,7 +134,7 @@ class FeedbackController: UIViewController, MFMailComposeViewControllerDelegate 
 		return sendEmail
 	}
 	
-	func setupConstraints(){
+	func setupConstraints() {
 		
 		view.addSubview(messageText)
 		view.addSubview(message)
@@ -177,11 +177,11 @@ class FeedbackController: UIViewController, MFMailComposeViewControllerDelegate 
 			])
 	}
 	
-	@objc func dismissKeyboard(){
+	@objc func dismissKeyboard() {
 		view.endEditing(true)
 	}
 	
-	@objc func evaluateApp(buttonPressed: UIButton!){
+	@objc func evaluateApp(buttonPressed: UIButton!) {
 		if buttonPressed.tag == 1{
 			buttonOne.setImage(UIImage(named:"star"), for: .normal)
 			buttonTwo.setImage(UIImage(named:"dot"), for: .normal)
@@ -216,7 +216,7 @@ class FeedbackController: UIViewController, MFMailComposeViewControllerDelegate 
 	}
 	
 	//MARK: - Email Delegate
-	func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?){
+	func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
 		controller.dismiss(animated: true, completion: nil)
 	}
 }

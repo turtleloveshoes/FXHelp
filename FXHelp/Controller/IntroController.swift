@@ -79,7 +79,7 @@ class IntroController: UIViewController {
 		return startButton
 	}()
 	
-	@objc func goToHome(){
+	@objc func goToHome() {
 		// If accessed once no longer displayed the intro screen
 		UserDefaults.standard.set(true, forKey: "checked")
 		
@@ -101,7 +101,7 @@ class IntroController: UIViewController {
 		setupConstraints()
 	}
 	
-	func setupConstraints(){
+	func setupConstraints() {
 		let stackView = UIStackView(arrangedSubviews: [previousButton, pageControl, nextButton])
 		stackView.distribution = .fillEqually
 		stackView.translatesAutoresizingMaskIntoConstraints = false
@@ -136,7 +136,7 @@ class IntroController: UIViewController {
 			])
 	}
 	
-	@objc func previousPage(){
+	@objc func previousPage() {
 		let indexPath = IndexPath(item: pageControl.currentPage - 1, section: 0)
 		
 		if pageControl.currentPage == 0 {
@@ -151,7 +151,7 @@ class IntroController: UIViewController {
 		}
 	}
 	
-	@objc func nextPage(){
+	@objc func nextPage() {
 		previousButton.tintColor = UIConstants.blueColor
 		
 		let indexPath = IndexPath(item: pageControl.currentPage + 1, section: 0)

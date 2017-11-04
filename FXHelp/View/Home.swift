@@ -4,9 +4,9 @@
 
 import UIKit
 
-private let cellId = "cellId"
-
 class Home: UICollectionViewCell {
+	
+	let cellId = "cellId"
 	
 	lazy var collectionView: UICollectionView = {
 		let layout = UICollectionViewFlowLayout()
@@ -23,7 +23,7 @@ class Home: UICollectionViewCell {
 		setupView()
 	}
 	
-	func setupView(){
+	func setupView() {
 		addSubview(collectionView)
 		
 		addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H: |[collectionView]|", options: .alignAllCenterX, metrics: nil, views: ["collectionView": self.collectionView]))

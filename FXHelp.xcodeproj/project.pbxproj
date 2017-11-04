@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7108FED21FA41D7F0020763B /* SearchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7108FED11FA41D7F0020763B /* SearchCell.swift */; };
+		7108FEEC1FA7C65A0020763B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7108FEEA1FA7C6590020763B /* LaunchScreen.storyboard */; };
+		7108FEF01FA7C7D30020763B /* FXHelp-Bridging-Header.h in Resources */ = {isa = PBXBuildFile; fileRef = 7108FEE81FA7C6590020763B /* FXHelp-Bridging-Header.h */; };
 		71189A5D1F58E8F000B76A2E /* ZillaSlab-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 7125DE681F58DB4E00D03DB3 /* ZillaSlab-Bold.otf */; };
 		71189A5E1F58E8F000B76A2E /* ZillaSlab-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 7125DE691F58DB4E00D03DB3 /* ZillaSlab-Light.otf */; };
 		71189A5F1F58E8F000B76A2E /* ZillaSlab-LightItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 7125DE6A1F58DB4E00D03DB3 /* ZillaSlab-LightItalic.otf */; };
@@ -26,18 +29,23 @@
 		7125DE8A1F58DBE300D03DB3 /* MenuBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7125DE841F58DBE300D03DB3 /* MenuBar.swift */; };
 		7125DE8B1F58DBE300D03DB3 /* MenuBarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7125DE851F58DBE300D03DB3 /* MenuBarCell.swift */; };
 		7125DE8C1F58DBE300D03DB3 /* SettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7125DE861F58DBE300D03DB3 /* SettingsTableViewCell.swift */; };
-		7125DE8E1F58DBF800D03DB3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7125DE8D1F58DBF800D03DB3 /* LaunchScreen.storyboard */; };
 		7125DE901F58DC2300D03DB3 /* IntroPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7125DE8F1F58DC2300D03DB3 /* IntroPage.swift */; };
 		7140BA111F7C7D200083E7EC /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7140BA101F7C7D200083E7EC /* Reachability.swift */; };
+		715D2A6D1F9FF0A500A278C8 /* AppIcon.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 715D2A6C1F9FF0A500A278C8 /* AppIcon.xcassets */; };
 		718B28A11F4F501500573ADF /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 718B28A01F4F501500573ADF /* CoreGraphics.framework */; };
 		718B28A31F4F501900573ADF /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 718B28A21F4F501900573ADF /* QuartzCore.framework */; };
 		71C341181F58D8EF007FC177 /* about.html in Resources */ = {isa = PBXBuildFile; fileRef = 71C341161F58D8EF007FC177 /* about.html */; };
 		71C341191F58D8EF007FC177 /* style.css in Resources */ = {isa = PBXBuildFile; fileRef = 71C341171F58D8EF007FC177 /* style.css */; };
 		71C341201F58D98E007FC177 /* Intro.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 71C3411D1F58D98E007FC177 /* Intro.xcassets */; };
 		71C341211F58D98E007FC177 /* MenuBar.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 71C3411E1F58D98E007FC177 /* MenuBar.xcassets */; };
+		71F1D79F1FA9477200C0A91E /* SearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71F1D79B1FA9249600C0A91E /* SearchController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7108FED11FA41D7F0020763B /* SearchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SearchCell.swift; path = View/SearchCell.swift; sourceTree = "<group>"; };
+		7108FEE81FA7C6590020763B /* FXHelp-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "FXHelp-Bridging-Header.h"; sourceTree = "<group>"; };
+		7108FEE91FA7C6590020763B /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7108FEEA1FA7C6590020763B /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7125DE681F58DB4E00D03DB3 /* ZillaSlab-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "ZillaSlab-Bold.otf"; path = "FXHelp/Assets/Fonts/ZillaSlab-Bold.otf"; sourceTree = SOURCE_ROOT; };
 		7125DE691F58DB4E00D03DB3 /* ZillaSlab-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "ZillaSlab-Light.otf"; path = "FXHelp/Assets/Fonts/ZillaSlab-Light.otf"; sourceTree = SOURCE_ROOT; };
 		7125DE6A1F58DB4E00D03DB3 /* ZillaSlab-LightItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "ZillaSlab-LightItalic.otf"; path = "FXHelp/Assets/Fonts/ZillaSlab-LightItalic.otf"; sourceTree = SOURCE_ROOT; };
@@ -57,18 +65,17 @@
 		7125DE841F58DBE300D03DB3 /* MenuBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MenuBar.swift; path = FXHelp/View/MenuBar.swift; sourceTree = SOURCE_ROOT; };
 		7125DE851F58DBE300D03DB3 /* MenuBarCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MenuBarCell.swift; path = FXHelp/View/MenuBarCell.swift; sourceTree = SOURCE_ROOT; };
 		7125DE861F58DBE300D03DB3 /* SettingsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingsTableViewCell.swift; path = FXHelp/View/SettingsTableViewCell.swift; sourceTree = SOURCE_ROOT; };
-		7125DE8D1F58DBF800D03DB3 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = FXHelp/LaunchScreen.storyboard; sourceTree = SOURCE_ROOT; };
 		7125DE8F1F58DC2300D03DB3 /* IntroPage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = IntroPage.swift; path = FXHelp/Model/IntroPage.swift; sourceTree = SOURCE_ROOT; };
 		713008671EBFAA0F00593FC3 /* FXHelp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FXHelp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7140BA101F7C7D200083E7EC /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Reachability.swift; path = Extensions/Reachability.swift; sourceTree = "<group>"; };
-		716B95FB1F5B9C6A00B5C440 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		715D2A6C1F9FF0A500A278C8 /* AppIcon.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = AppIcon.xcassets; path = Assets/AppIcon.xcassets; sourceTree = "<group>"; };
 		718B28A01F4F501500573ADF /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		718B28A21F4F501900573ADF /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		71C341161F58D8EF007FC177 /* about.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; name = about.html; path = FXHelp/HTML/about.html; sourceTree = SOURCE_ROOT; };
 		71C341171F58D8EF007FC177 /* style.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; name = style.css; path = FXHelp/HTML/style.css; sourceTree = SOURCE_ROOT; };
-		71C3411C1F58D967007FC177 /* FXHelp-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "FXHelp-Bridging-Header.h"; path = "FXHelp/FXHelp-Bridging-Header.h"; sourceTree = SOURCE_ROOT; };
 		71C3411D1F58D98E007FC177 /* Intro.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Intro.xcassets; path = FXHelp/Assets/Intro.xcassets; sourceTree = SOURCE_ROOT; };
 		71C3411E1F58D98E007FC177 /* MenuBar.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = MenuBar.xcassets; path = FXHelp/Assets/MenuBar.xcassets; sourceTree = SOURCE_ROOT; };
+		71F1D79B1FA9249600C0A91E /* SearchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SearchController.swift; path = Controller/SearchController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,6 +91,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7108FED71FA7C4280020763B /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				7108FEE81FA7C6590020763B /* FXHelp-Bridging-Header.h */,
+				7108FEE91FA7C6590020763B /* Info.plist */,
+				7108FEEA1FA7C6590020763B /* LaunchScreen.storyboard */,
+			);
+			name = Helpers;
+			path = FXHelp;
+			sourceTree = "<group>";
+		};
 		711085A11F43B3F00080E7BD /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
@@ -100,6 +118,7 @@
 			isa = PBXGroup;
 			children = (
 				713008691EBFAA0F00593FC3 /* FXHelp */,
+				7108FED71FA7C4280020763B /* Helpers */,
 				713008681EBFAA0F00593FC3 /* Products */,
 				718B289F1F4F501500573ADF /* Frameworks */,
 			);
@@ -124,9 +143,6 @@
 				713008921EBFAC6100593FC3 /* Controller */,
 				713008911EBFAC5B00593FC3 /* View */,
 				713008901EBFAC4E00593FC3 /* Model */,
-				71C3411C1F58D967007FC177 /* FXHelp-Bridging-Header.h */,
-				7125DE8D1F58DBF800D03DB3 /* LaunchScreen.storyboard */,
-				716B95FB1F5B9C6A00B5C440 /* Info.plist */,
 			);
 			path = FXHelp;
 			sourceTree = "<group>";
@@ -147,6 +163,7 @@
 				7125DE841F58DBE300D03DB3 /* MenuBar.swift */,
 				7125DE851F58DBE300D03DB3 /* MenuBarCell.swift */,
 				7125DE861F58DBE300D03DB3 /* SettingsTableViewCell.swift */,
+				7108FED11FA41D7F0020763B /* SearchCell.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -160,6 +177,7 @@
 				7125DE781F58DBB500D03DB3 /* IntroController.swift */,
 				7125DE791F58DBB500D03DB3 /* MenuSettingsController.swift */,
 				7125DE7A1F58DBB500D03DB3 /* NotificationsController.swift */,
+				71F1D79B1FA9249600C0A91E /* SearchController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -192,6 +210,7 @@
 		7143FD801EC2350D00E454CF /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				715D2A6C1F9FF0A500A278C8 /* AppIcon.xcassets */,
 				71C3411D1F58D98E007FC177 /* Intro.xcassets */,
 				71C3411E1F58D98E007FC177 /* MenuBar.xcassets */,
 				711085A11F43B3F00080E7BD /* Fonts */,
@@ -283,16 +302,18 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7108FEF01FA7C7D30020763B /* FXHelp-Bridging-Header.h in Resources */,
 				71189A5D1F58E8F000B76A2E /* ZillaSlab-Bold.otf in Resources */,
 				71189A5E1F58E8F000B76A2E /* ZillaSlab-Light.otf in Resources */,
 				71189A5F1F58E8F000B76A2E /* ZillaSlab-LightItalic.otf in Resources */,
 				71189A601F58E8F000B76A2E /* ZillaSlab-Medium.otf in Resources */,
 				71189A611F58E8F000B76A2E /* ZillaSlab-Regular.otf in Resources */,
 				71C341181F58D8EF007FC177 /* about.html in Resources */,
-				71C341201F58D98E007FC177 /* Intro.xcassets in Resources */,
-				7125DE8E1F58DBF800D03DB3 /* LaunchScreen.storyboard in Resources */,
 				71C341191F58D8EF007FC177 /* style.css in Resources */,
+				7108FEEC1FA7C65A0020763B /* LaunchScreen.storyboard in Resources */,
+				71C341201F58D98E007FC177 /* Intro.xcassets in Resources */,
 				71C341211F58D98E007FC177 /* MenuBar.xcassets in Resources */,
+				715D2A6D1F9FF0A500A278C8 /* AppIcon.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -303,6 +324,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				71F1D79F1FA9477200C0A91E /* SearchController.swift in Sources */,
 				7125DE741F58DB9100D03DB3 /* UIConstants.swift in Sources */,
 				7125DE901F58DC2300D03DB3 /* IntroPage.swift in Sources */,
 				7125DE881F58DBE300D03DB3 /* Home.swift in Sources */,
@@ -318,6 +340,7 @@
 				7125DE7F1F58DBB500D03DB3 /* MenuSettingsController.swift in Sources */,
 				7125DE7C1F58DBB500D03DB3 /* FeedbackController.swift in Sources */,
 				7125DE8B1F58DBE300D03DB3 /* MenuBarCell.swift in Sources */,
+				7108FED21FA41D7F0020763B /* SearchCell.swift in Sources */,
 				7125DE7B1F58DBB500D03DB3 /* AboutController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -433,6 +456,7 @@
 		7130087A1EBFAA0F00593FC3 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = W4DGP88X53;
 				INFOPLIST_FILE = FXHelp/Info.plist;
@@ -449,6 +473,7 @@
 		7130087B1EBFAA0F00593FC3 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = W4DGP88X53;
 				INFOPLIST_FILE = FXHelp/Info.plist;
